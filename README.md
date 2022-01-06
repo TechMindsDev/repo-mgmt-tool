@@ -1,6 +1,6 @@
 ### 1. Download
 
-First download this repository so you can use the tools (eg. into `~/monorepo-tools`).
+First download this repository so you can use the tools (eg. into `~/repo-tools`).
 
 ```
 git clone https://github.com/techmindsdev/repo-mgmt-tools ~/repo-tools
@@ -11,7 +11,16 @@ git clone https://github.com/techmindsdev/repo-mgmt-tools ~/repo-tools
 You have to create a new git repository for your monorepo and add all your existing packages as remotes.
 You can add as many remotes as you want.
 
-In this example we will prepare 3 packages from github for merging into monorepo.
+create a new folder in which the all consolidated repos code would be go into
+
+```
+eg: 
+mkdir mono-repo
+cd mono-repo
+
+```
+
+In this example we will prepare 3 packages from github for merging into repo folder.
 
 ```
 git init
@@ -32,7 +41,7 @@ The command will rewrite history of all mentioned repositories as if they were d
 Only branches `master` will be merged together, other branches will be kept only from first package to avoid possible branch name conflicts.
 
 ```
-~/monorepo-tools/monorepo_build.sh \
+~/repo-tools/monorepo_build.sh \
     main-repository package-alpha:packages/alpha package-beta:packages/beta
 ```
 
@@ -51,7 +60,7 @@ You should develop all your packages in this repository from now on.
 When you made your changes and would like to update the original repositories use `monorepo_split.sh` with the same arguments as before.
 
 ```
-~/monorepo-tools/monorepo_split.sh \
+~/repo-tools/monorepo_split.sh \
     main-repository package-alpha:packages/alpha package-beta:packages/beta
 ```
 
@@ -80,7 +89,7 @@ In this case, don't use `monorepo_build.sh`, but do following steps:
 * Add the code and commit it
 * Use split tool with the new package
     ```
-    ~/monorepo-tools/monorepo_split.sh \
+    ~/repo-tools/monorepo_split.sh \
         main-repository package-alpha:packages/alpha package-beta:packages/beta package-gamma:packages/gamma
     ```
 
